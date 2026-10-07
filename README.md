@@ -49,9 +49,12 @@ SaveSystem.Save("gameplay_save");
 // Reset progress to the schema's default values
 SaveSystem.Reset("gameplay_save");
 ```
+
 ![Save Demonstation](Media/converte(3).gif)
+Demo: click counter saved and restored after restart
 
 ![Save Erase Demonstration](Media/converted(4).gif)
+Demo: Reset returns the value to the schema default
 
 ## Limitations
 
