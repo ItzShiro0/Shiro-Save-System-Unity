@@ -9,10 +9,7 @@ A lightweight and autonomous save system for Unity based on ScriptableObjects. N
 * **ScriptableObject schemas:** Default values are defined in a schema, so loading an empty or new save does not cause a `NullReferenceException`.
 * **Custom editor inspector:** Simple UI with protection against accidental asset renaming, which keeps the save database stable.
 
-## Requirements
-
 * Tested on Unity 6.6
-* Older versions: not tested
 
 ## Installation
 
