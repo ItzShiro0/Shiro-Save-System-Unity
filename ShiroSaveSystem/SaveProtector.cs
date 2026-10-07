@@ -6,7 +6,7 @@ using UnityEngine;
 
 public static class SaveProtector
 {
-    private static readonly string salt = "huipidarassukablyat"; 
+    private static readonly string salt = "ShiroSaveSystem_SecretHashKey_2026!"; 
 
     public static void GenerateHashForFile(string filePath)
     {
