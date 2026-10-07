@@ -15,9 +15,13 @@ A lightweight, secure, and autonomous save system for Unity based on ScriptableO
 1. In Unity, go to `Tools -> Save System -> Create New Schema`.
 
 ![](Media/Media/converted.gif)
+
 3. Enter a unique Save ID (e.g., `gameplay_save`) and click **Save Name**.
+
 ![](Media/Media/converted(1).gif) 
+
 4. Add your default variables using the Custom Inspector.
+
 ![](Media/Media/converted(2).gif) 
 
 ### 2. Usage in Code
