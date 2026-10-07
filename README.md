@@ -11,8 +11,8 @@ A lightweight and autonomous save system for Unity based on ScriptableObjects. N
 
 ## Requirements
 
-* Unity [your version]
-* No external packages
+* Tested on Unity 6.6
+* Older versions: not tested
 
 ## Installation
 
@@ -25,15 +25,15 @@ A lightweight and autonomous save system for Unity based on ScriptableObjects. N
 
 1. In Unity, open `Tools -> Save System -> Create New Schema`.
 
-   ![Create a schema](Media/create-schema.gif)
+   ![Create a schema](Media/Media/converted.gif)
 
 2. Enter a unique Save ID (for example, `gameplay_save`) and click **Save Name**.
 
-   ![Set the Save ID](Media/save-name.gif)
+   ![Set the Save ID](Media/Media/converted(1).gif)
 
 3. Add your default variables in the custom inspector.
 
-   ![Add variables](Media/add-variables.gif)
+   ![Add variables](Media/Media/converted(2).gif)
 
 ### 2. Use it in code
 
