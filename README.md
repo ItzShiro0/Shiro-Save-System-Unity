@@ -1,38 +1,66 @@
 # Shiro Save System
 
-A lightweight, secure, and autonomous save system for Unity based on ScriptableObjects.
+A lightweight and autonomous save system for Unity based on ScriptableObjects. No external dependencies.
 
 ## Features
 
-* **RAM Protection (XOR Anti-Cheat):** Secures variables in memory to prevent scanning and manipulation via tools like Cheat Engine.
-* **Disk Protection (SHA-256 Validation):** Generates a cryptographic hash for `.json` save files. Any manual tampering with the save file will result in an automatic reset to default values.
-* **ScriptableObject Schemas:** Safe initialization using default values. Prevents `NullReferenceException` when loading empty or new saves.
-* **Custom Editor Inspector:** Clean UI with built-in protection against accidental asset renaming to keep the database stable.
+* **RAM protection (XOR obfuscation):** Stores variables in memory in an obfuscated form, so scanners like Cheat Engine cannot easily find and change them.
+* **Disk validation (SHA-256):** Generates a hash for each `.json` save file. If the file is edited manually, the save is reset to default values.
+* **ScriptableObject schemas:** Default values are defined in a schema, so loading an empty or new save does not cause a `NullReferenceException`.
+* **Custom editor inspector:** Simple UI with protection against accidental asset renaming, which keeps the save database stable.
+
+## Requirements
+
+* Unity [your version]
+* No external packages
+
+## Installation
+
+1. Download or clone this repository.
+2. Copy the `ShiroSaveSystem` folder into your project's `Assets` folder.
 
 ## Quick Start
 
-### 1. Create a Save Schema
-1. In Unity, go to `Tools -> Save System -> Create New Schema`.
+### 1. Create a save schema
 
-![](Media/Media/converted.gif)
+1. In Unity, open `Tools -> Save System -> Create New Schema`.
 
-2. Enter a unique Save ID (e.g., `gameplay_save`) and click **Save Name**.
+   ![Create a schema](Media/create-schema.gif)
 
-![](Media/Media/converted(1).gif) 
+2. Enter a unique Save ID (for example, `gameplay_save`) and click **Save Name**.
 
-3. Add your default variables using the Custom Inspector.
+   ![Set the Save ID](Media/save-name.gif)
 
-![](Media/Media/converted(2).gif) 
+3. Add your default variables in the custom inspector.
 
-### 2. Usage in Code
+   ![Add variables](Media/add-variables.gif)
 
-Interact with the save system directly via the static `SaveSystem` class without looking for components on the scene.
+### 2. Use it in code
+
+Use the static `SaveSystem` class. You do not need to look for components on the scene.
 
 ```csharp
-int currentCoins = SaveSystem.GetInt("gameplay_save", "Coins"); // Read a value (returns default from Schema if it's a new game)
+// Read a value (returns the default from the schema if it is a new game)
+int currentCoins = SaveSystem.GetInt("gameplay_save", "Coins");
 
-SaveSystem.SetInt("gameplay_save", "Coins", currentCoins + 100); // Update a value in RAM
+// Change a value in RAM
+SaveSystem.SetInt("gameplay_save", "Coins", currentCoins + 100);
 
-SaveSystem.Save("gameplay_save"); // Save progress to disk physically
+// Write progress to disk
+SaveSystem.Save("gameplay_save");
 
-SaveSystem.Reset("gameplay_save"); // Reset progress to default Schema values
+// Reset progress to the schema's default values
+SaveSystem.Reset("gameplay_save");
+```
+
+## Limitations
+
+This is protection against casual cheating, not a full anti-cheat.
+
+* XOR obfuscation makes values harder to find in memory, but a determined person can still change them.
+* The SHA-256 hash stops simple edits of the save file. The salt is stored in the code, so someone who reads your build can calculate a valid hash.
+* The API is static for ease of use. This makes it harder to replace in unit tests than an interface-based service.
+
+## License
+
+MIT
