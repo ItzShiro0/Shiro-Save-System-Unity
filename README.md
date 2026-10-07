@@ -49,6 +49,9 @@ SaveSystem.Save("gameplay_save");
 // Reset progress to the schema's default values
 SaveSystem.Reset("gameplay_save");
 ```
+![Save Demonstation](Media/converted(3).gif)
+
+![Save Erase Demonstration](Media/converted(4).gif)
 
 ## Limitations
 
